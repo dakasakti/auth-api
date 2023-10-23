@@ -17,4 +17,9 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          script: ./deploy.sh
+          script: |
+            cd ~/auth-api
+            git pull https://github.com/dakasakti/auth-api.git master
+            npm install
+            npm run migrate up
+            pm2 restart auth-api

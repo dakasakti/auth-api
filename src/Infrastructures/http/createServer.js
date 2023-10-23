@@ -33,6 +33,13 @@ const createServer = async (container) => {
         value: 'Hello world!',
       }),
     },
+    {
+      method: 'GET',
+      path: '/hello',
+      handler: () => ({
+        value: 'Edited by Dakasakti',
+      }),
+    },
   ]);
 
   server.ext('onPreResponse', (request, h) => {
